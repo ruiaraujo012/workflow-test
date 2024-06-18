@@ -42,6 +42,7 @@ jobs:
       - name: Build
         run: |
           pnpm run build
+          sudo chmod -R ugo+rwX .
           git config --global user.name 'Rui Araújo'
           git config --global user.email 'ruiaraujo012@users.noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.PAT }}@github.com/${{ github.repository }}
