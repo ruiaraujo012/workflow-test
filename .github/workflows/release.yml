@@ -29,6 +29,6 @@ jobs:
       - name: Build
         run: pnpm build
       - name: Release
-        run: pnpm semanti-release
+        run: pnpm semantic-release
         env:
           GH_TOKEN: ${{ secrets.PAT}}
