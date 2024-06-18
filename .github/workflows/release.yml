@@ -27,6 +27,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
       - name: Build
+        env:
+          APP_VERSION: ${{ env.NEXT_RELEASE_VERSION }}
         run: pnpm build
       - name: Zip dist folder
         run: zip -r dist.zip dist
