@@ -75,7 +75,7 @@ export default {
       "@semantic-release/github",
       {
         assets: [
-          { path: "dist", label: "Dist" },
+          { path: "dist/*", label: "dist" },
           { path: "CHANGELOG.md", label: "Changelog" },
         ],
       },
