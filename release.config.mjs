@@ -9,6 +9,14 @@ export default {
       name: "dev",
       prerelease: true,
     },
+    {
+      name: "alpha",
+      prerelease: true,
+    },
+    {
+      name: "beta",
+      prerelease: true,
+    },
   ],
   plugins: [
     [
@@ -65,16 +73,9 @@ export default {
         npmPublish: false,
       },
     ],
-    // [
-    //   "@semantic-release/exec",
-    //   {
-    //     prepareCmd: "sh ./scripts/update-version.sh ${nextRelease.version}",
-    //   },
-    // ],
     [
       "@semantic-release/git",
       {
-        // assets: ["package.json", "pnpm-lock.yaml", "CHANGELOG.md", "dist"],
         assets: ["package.json", "pnpm-lock.yaml", "CHANGELOG.md"],
       },
     ],
