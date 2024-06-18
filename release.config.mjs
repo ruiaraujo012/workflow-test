@@ -67,7 +67,8 @@ export default {
     [
       "@semantic-release/git",
       {
-        assets: ["package.json", "pnpm-lock.yaml", "CHANGELOG.md", "dist"],
+        // assets: ["package.json", "pnpm-lock.yaml", "CHANGELOG.md", "dist"],
+        assets: ["package.json", "pnpm-lock.yaml", "CHANGELOG.md"],
       },
     ],
     "@semantic-release/github",
