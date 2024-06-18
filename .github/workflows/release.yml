@@ -41,10 +41,11 @@ jobs:
           push: false
       - name: Build
         run: |
+          pnpm run build
           git config --global user.name 'Rui Araújo'
           git config --global user.email 'ruiaraujo012@users.noreply.github.com'
-          pnpm run build
-          git add .
+          git remote set-url origin https://x-access-token:${{ secrets.PAT }}@github.com/${{ github.repository }}
+          git add -A
           git commit -m "bump: bump and build ${{ env.REVISION }}"
           git push
       - name: Release
