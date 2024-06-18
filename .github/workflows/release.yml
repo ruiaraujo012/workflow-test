@@ -27,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
       - name: Get next version
-        run: pnpm semantic-release --no-ci --dy-run
+        run: pnpm semantic-release:next-version
         env:
           GH_TOKEN: ${{ secrets.PAT}}
       - name: Build
