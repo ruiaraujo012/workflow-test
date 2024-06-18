@@ -5,10 +5,6 @@ import react from "@vitejs/plugin-react-swc";
 export default defineConfig(({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
 
-  console.log("\n\n\n\n\n\n\n\n\n");
-  console.log("process.env >> ", process.env);
-  console.log("\n\n\n\n\n\n\n\n\n");
-
   return {
     plugins: [react()],
     define: {
