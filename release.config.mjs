@@ -58,12 +58,15 @@ export default {
         npmPublish: false,
       },
     ],
-    // [
-    //   "@semantic-release/exec",
-    //   {
-    //     prepareCmd: "sh ./scripts/update-version.sh ${nextRelease.version}",
-    //   },
-    // ],
+    /**
+     * @type {import('@semantic-release/exec')}
+     */
+    [
+      "@semantic-release/exec",
+      {
+        prepareCmd: "sh ./scripts/update-version.sh ${nextRelease.version}",
+      },
+    ],
     [
       "@semantic-release/git",
       {
