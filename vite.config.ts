@@ -8,9 +8,11 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
     define: {
-      APP_ENVIRONMENT: mode,
-      APP_VERSION: process.env.APP_VERSION || process.env.npm_package_version,
-      APP_VERSION_DATE: new Date().toISOString(),
+      APP_ENVIRONMENT: JSON.stringify(mode),
+      APP_VERSION: JSON.stringify(
+        process.env.APP_VERSION || process.env.npm_package_version
+      ),
+      APP_VERSION_DATE: JSON.stringify(new Date().toISOString()),
     },
   };
 });
