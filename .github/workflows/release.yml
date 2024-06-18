@@ -9,13 +9,13 @@ jobs:
   bump-version:
     if: "!startsWith(github.event.head_commit.message, 'bump:')"
     runs-on: ubuntu-latest
-    name: "Bump version and create changelog with commitizen"
+    name: 'Bump version and create changelog with commitizen'
     steps:
       - name: Check out
         uses: actions/checkout@v4
         with:
           fetch-depth: '0'
-          token: "${{ secrets.PAT }}"
+          token: '${{ secrets.PAT }}'
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
         with:
@@ -35,6 +35,8 @@ jobs:
           push: false
       - name: Build
         run: |
+          git config --global user.name 'Rui Araújo'
+          git config --global user.email 'ruiaraujo012@users.noreply.github.com'
           pnpm run build
           git add .
           git commit -m "bump: bump and build ${{ env.REVISION }}"
@@ -42,7 +44,7 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          body_path: "body.md"
+          body_path: 'body.md'
           tag_name: ${{ env.REVISION }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
