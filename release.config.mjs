@@ -71,7 +71,15 @@ export default {
         assets: ["package.json", "pnpm-lock.yaml", "CHANGELOG.md"],
       },
     ],
-    "@semantic-release/github",
+    [
+      "@semantic-release/github",
+      {
+        assets: [
+          { path: "dist", label: "Dist" },
+          { path: "CHANGELOG.md", label: "Changelog" },
+        ],
+      },
+    ],
   ],
   publishConfig: {
     access: "restricted",
