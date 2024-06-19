@@ -2,6 +2,8 @@
  * @type {import('semantic-release').GlobalConfig}
  */
 export default {
+  repositoryUrl: "https://github.com/ruiaraujo012/workflow-test",
+  tagFormat: "v${version}",
   branches: [
     "main",
     "next",
@@ -83,7 +85,7 @@ export default {
       "@semantic-release/exec",
       {
         prepareCmd:
-          "docker save fe:${nextRelease.gitTag} | gzip > ${nextRelease.gitTag}.tar.gz",
+          "docker save fe:${nextRelease.gitTag} | gzip > docker-image.tar.gz",
       },
     ],
     [
@@ -97,9 +99,8 @@ export default {
       {
         assets: [
           { path: "dist.zip", label: "dist-${nextRelease.gitTag}" },
-          { path: "CHANGELOG.md", label: "Changelog" },
           {
-            path: "${nextRelease.gitTag}.tar.gz",
+            path: "docker-image.tar.gz",
             label: "docker-image-${nextRelease.gitTag}",
           },
         ],
