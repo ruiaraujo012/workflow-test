@@ -74,6 +74,19 @@ export default {
       },
     ],
     [
+      "@semantic-release/exec",
+      {
+        prepareCmd: "docker build -t fe:${nextRelease.gitTag} .",
+      },
+    ],
+    [
+      "@semantic-release/exec",
+      {
+        prepareCmd:
+          "docker save fe:${nextRelease.gitTag} | gzip > ${nextRelease.gitTag}.tar.gz",
+      },
+    ],
+    [
       "@semantic-release/git",
       {
         assets: ["package.json", "pnpm-lock.yaml", "CHANGELOG.md"],
@@ -85,6 +98,10 @@ export default {
         assets: [
           { path: "dist.zip", label: "dist-${nextRelease.gitTag}" },
           { path: "CHANGELOG.md", label: "Changelog" },
+          {
+            path: "${nextRelease.gitTag}.tar.gz",
+            label: "docker-image-${nextRelease.gitTag}",
+          },
         ],
       },
     ],
